@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/functions/commonFun.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/functions/common.php';
 require BASE_DIR . '/functions/delDir.php';
 
 $fileName = $_GET['name'];

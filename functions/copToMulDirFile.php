@@ -11,7 +11,6 @@ if(!function_exists('creMulDir')){
  */
 function copToMulDirFile($oldFile, $newFile)
 {
-
     creMulDir(dirname($newFile));
     copy($oldFile, $newFile);
 }

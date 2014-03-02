@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/functions/commonFun.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/functions/common.php";
 require BASE_DIR . "/functions/listDirFromFold.php";
 
 $con = parse_ini_file(BASE_DIR . "/config.ini");

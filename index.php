@@ -102,7 +102,12 @@ if (!@$con['proName']) {
 </form>
 <form action="/actions/updIniA.php" class="form1">
     <input id="list" type="submit" value="更新所有的ini文件"/>
+
+    <a href="dealHtmlpro.php" class="btn btn-primary" role="button">
+    <i class="glyphicon glyphicon-plus"></i>
+    打开普通html移动文件的项目</a>
 </form>
+
 <hr>
 <form action="/actions/moveFilesA.php" method="post" class="form2">
     <label for="proDir">移动并整理所有文件到目录:</label>
@@ -134,9 +139,7 @@ if (!@$con['proName']) {
     打开simpleHtmlDom的帮助文档</a>
 
 <a href="store.php" class="btn btn-success" style="" role="button"> 查看储存的模板</a>
-
 <a href="phpinfo.php" class="btn btn-primary" role="button" target="_blank">打开phpinfo</a>
-
 <a href="peek.php" class="btn btn-success" style="margin-left: 150px" role="button" target="_blank"> 预览模板</a>
 <a href="/actions/clearPeekmodsA.php" class="btn btn-danger" role="button">清空所有模板</a>
 <hr>
