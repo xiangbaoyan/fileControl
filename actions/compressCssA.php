@@ -1,0 +1,21 @@
+<?php
+require $_SERVER['DOCUMENT_ROOT'] . '/functions/commonFun.php';
+//require BASE_DIR . '/functions/copToMulDirFile.php';
+    $proDir = $_POST['proName'];
+
+    $tarDir = $proDir."/css";
+
+    $it = new RecursiveDirectoryIterator($tarDir);
+
+    foreach(new RecursiveIteratorIterator($it) as $file){
+
+        if(is_file($file)){
+            $cssData = file_get_contents($file);
+
+            $cssData = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $cssData);
+
+            file_put_contents($file,$cssData);
+        }
+    }
+
+    popWin("压缩成功！！");

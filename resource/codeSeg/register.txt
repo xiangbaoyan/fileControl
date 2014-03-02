@@ -1,0 +1,13 @@
+<?php
+/**
+ * 注册代码
+ */
+if($errData == "" && !empty($clean)){
+    require $_SERVER["DOCUMENT_ROOT"] . "/functions/mysqlFun.php";
+    _connect();
+    _set_names();
+    _select_db();
+    registUser($clean);
+    _close();
+}
+?>

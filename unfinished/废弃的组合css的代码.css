@@ -1,0 +1,26 @@
+/*//组合所有的css*/
+/***/
+ /** 添加一个模块页面index.php的数据*/
+ /***/
+ /** @param string $div   模块的div，是个数字*/
+ /** @param string $data 这是生成的项目 页面 的数据*/
+ /**/
+/*//function putCssData($div,&$data){*/
+/*//    //先得到div 模块index.php 页面的数据；*/
+/*//    $sourcePage = BASE_DIR."/modules/div".$div."/index.css";*/
+/*//    //得到页面的数据*/
+/*//    $sourceData = file_get_contents($sourcePage);*/
+/*//    //添加到$data 的<body>的下面*/
+/*//    //注意，必须先添加最后一个div，所以让divs倒序*/
+/*//    $data = $data."\r{$sourceData}\r";*/
+/*//};*/
+
+
+/*//$tarPath = $projectDir."/{$pageName}.php";*/
+/*//$tarHref = str_replace(BASE_DIR,$_SERVER['SERVER_NAME'],$tarPath);*/
+
+
+/*//$cssData = str_replace("images","../images",$cssData);*/
+/*//file_put_contents($projectDir."/css/{$pageName}.css",$cssData);*/
+
+

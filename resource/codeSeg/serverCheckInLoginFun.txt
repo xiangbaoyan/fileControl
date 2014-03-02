@@ -1,0 +1,24 @@
+<?php
+/**
+ * 服务器验证代码
+ */
+define("IN_TG", true);
+require $_SERVER["DOCUMENT_ROOT"] . "/functions/commonFun.php";
+require $_SERVER["DOCUMENT_ROOT"] . "/functions/serverCheckFun.php";
+/*
+ * $errData 变量存放着错误信息
+ *
+ * 把这段复制到相应位置
+ * <?php if(isset($errData))echo $errData; ?>
+ *
+ * form 的action 要改成 login?action=login;
+ */
+if (@$_GET['action'] == "login") {
+//验证并保存注册数据到临时变量$clean;
+    $clean =serverCheckFun(["username", "password", "code"]);
+}
+/*
+ * 把下面代码复制到form 下，防止表单验证
+ * <input type="hidden" name="uniqid" value="<?php echo $uniqid ?>" />
+ */
+?>

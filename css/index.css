@@ -1,0 +1,21 @@
+* {
+    margin: 0 auto;
+}
+
+.labelC {
+    display: inline-block;
+    width: 160px;
+}
+
+.form1 {
+    display: inline-block;
+}
+
+.form2 {
+    clear: left;
+}
+
+#proName {
+    width: 450px;
+}
+
