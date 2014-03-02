@@ -25,9 +25,11 @@
             preg_match_all("/(?<=url\()[^\)]*/",$cssData,$preArr);
             foreach($preArr[0] as $imgPath){
                 $imgPathOld = preg_replace("/\.{2}/",$tarDir."/media",$imgPath);
-                $newPath = $workDir.preg_replace("/\.{2}/","",$imgPath)."<br>";
+                $newPath = $workDir."/media".preg_replace("/\.{2}/","",$imgPath);
                 if(is_file($imgPathOld)){
-                   copToMulDirFile($imgPathOld,$newPath);
+//                    echo "imgPathOld".$imgPathOld."<br>";
+//                    echo "newPath".$newPath."<br>";
+            copToMulDirFile($imgPathOld,$newPath);
                 }
             }
 
