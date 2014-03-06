@@ -181,7 +181,9 @@ function creDataBase(){
     _query($sql);
     echo "2";
 }
-
+/*
+ * ============   创建表   =====================
+ */
 function creUserTable($arr){
     echo "3";
     $sql = "CREATE TABLE IF NOT EXISTS `tg_user` (
@@ -238,6 +240,28 @@ function creUserTable($arr){
     _query($sql);
     echo "4";
 }
+
+function creHtmlTable($arr){
+    $sql = "CREATE TABLE IF NOT EXISTS `tg_html` (
+           `tg_id` mediumint(8) unsigned NOT NULL COMMENT '//用户自动编号'
+           ";
+
+    if(in_array("title",$arr)){
+
+        $sql.= ",`tg_title` varchar(20) NOT NULL COMMENT '//网站标题'";
+
+    }
+
+    if(in_array("slogan",$arr)){
+
+        $sql.= ",`tg_slogan` varchar(40) NOT NULL DEFAULT '努力进取，团结奋进' COMMENT '//网站标题'";
+
+    }
+
+    $sql.=",PRIMARY KEY  (`tg_id`)) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;";
+    _query($sql);
+}
+
 
 /*--------------------------注册函数-------------------------------*/
 /*

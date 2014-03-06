@@ -21,7 +21,6 @@ function copDirToDir($desDir, $sourDir,$desDirBaseName) {
             //这里面，desDir，就是BASE_DIR . "/resource/modules/{$nav}
             $newFile = str_replace($sourDir, $desDir."/".$desDirBaseName, $file);
             copToMulDirFile($file, $newFile);
-
         }
     };
 

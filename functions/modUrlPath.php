@@ -11,11 +11,12 @@
  */
 function callUrl($matches)
 {
-    return "/images/" . basename($matches[0]);
+
+    return "../images/" . basename($matches[0]);
 }
 
 function modUrlPath(&$data)
 {
 
-   $data = preg_replace_callback("/[^\"\']*(\.png|\.jpg|\.gif)/", "callUrl",$data);
+   $data = preg_replace_callback("/(?<=url\(\").+\.(png|jpg|gif)/", "callUrl",$data);
 }

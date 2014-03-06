@@ -53,6 +53,6 @@ function modCssPath(&$data) {
 
         $i = 1;
 
-       $data = preg_replace_callback("/[^\"]*\.css/","callProCss",$data);
+       $data = preg_replace_callback("/(?<=href\=\")[^\"]+\.css/U","callProCss",$data);
 
     }

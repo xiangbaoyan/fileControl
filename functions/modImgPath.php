@@ -6,7 +6,7 @@
  */
 function callProImg($matches)
 {
-    return "/images/" . basename($matches[0]);
+    return "images/" . basename($matches[0]);
 }
 
 

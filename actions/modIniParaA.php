@@ -37,6 +37,12 @@ if ($paraValue) {
         dealIniPara($paraName, $paraValue,"","js.ini");
         popWin("修改参数说明成功");
     }
+    if (strpos($paraName, '.txt') > -1) {
+
+        //设置api的配置文件
+        dealIniPara($paraName, $paraValue,"","codeSeg.ini");
+        popWin("修改codeSeg.ini参数说明成功");
+    }
 
     if (strpos($paraName, 'Fun') > -1) {
 
@@ -44,6 +50,8 @@ if ($paraValue) {
         dealIniPara($paraName, $paraValue,"","php.ini");
         popWin("修改php.ini参数说明成功");
     }
+
+
 
 } else {
     popWin("请认真填写配置文件的参数值");

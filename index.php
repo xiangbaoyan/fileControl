@@ -102,10 +102,6 @@ if (!@$con['proName']) {
 </form>
 <form action="/actions/updIniA.php" class="form1">
     <input id="list" type="submit" value="更新所有的ini文件"/>
-
-    <a href="dealHtmlpro.php" class="btn btn-primary" role="button">
-    <i class="glyphicon glyphicon-plus"></i>
-    打开普通html移动文件的项目</a>
 </form>
 
 <hr>
@@ -114,15 +110,29 @@ if (!@$con['proName']) {
     <input type="text" name="proDir" id="proDir" value="<?php echo $con['proDir'] ?>"
            style="width:300px"/>
     <input type="submit" value="处理"/>
+    <a href="/actions/modSimResA.php" class="btn btn-primary" role="button">
+        <i class="glyphicon glyphicon-plus"></i>
+        针对这个目录来进行对css文件不改名的简单处理</a>
 </form>
 <hr>
 
 <!--整理HTML生成的php文件-->
 <form action="/actions/modHtmlA.php" method="post">
-    <label>修改所有HTML生成的php文件:</label>
+    <label>修改所有HTML生成的php文件(这是对复杂名称的css文件进行改名处理):</label>
     <input type="text" name="proDir" id="proDir" style="width: 500px" value="<?php echo $con['proDir'] ?>">
     <input type="submit" value="处理"/>
 </form>
+
+<hr>
+<form action="/actions/crePageDirA.php" method="post">
+    <label for="proDir2">提取一个页面相关数据到一个新的目录(后缀是page2)：</label>
+    <input type="text" name="proDir2" id="proDir2" readonly style="width: 500px" value="<?php echo $con['proDir']."-page2" ?>">
+    <br>
+    <label for="page" style="margin-left: 200px">要截取的页面为：</label>
+    <input type="text" name="page" style="width:500px" id="page" value="<?php echo $con['proDir']?>"/>
+    <input type="submit" class="btn btn-success" value="处理"/>
+</form>
+
 
 <hr>
 
@@ -184,17 +194,29 @@ disDeFold("拆解标题Title")
 
 <hr>
 <div class="row">
+    <div class="form-group">
     <form action="/actions/addBsSupA.php" class="form-horizontal" method="post">
-        <div class="form-group">
+
             <label for="proName" class="col-sm-3 control-label">请输入要添加的项目路径:</label>
 
             <div class="col-sm-5">
                 <input type="text" class="form-control" id="proName" name="proName"
                        value="<?php echo str_replace(basename($con['proDir']), "finalPro", $con['proDir']); ?>">
             </div>
-            <input id="list" class="btn btn-success col-sm-3" type="submit" value="为该项目添加Bootstrap支持"/>
-        </div>
+            <input id="list" class="btn btn-success col-sm-2" type="submit" value="为该项目添加Bootstrap支持"/>
+
     </form>
+    </div>
+    <div class="form-group">
+    <form action="/actions/addAdminA.php" method="post" class="form-horizontal">
+        <label for="proName3d" class="col-sm-3 control-label">请输入要添加的项目路径:</label>
+        <div class="col-sm-4">
+            <input type="text" name="proName" id="proName3" class="form-control"
+                   value="<?php echo str_replace(basename($con['proDir']), "finalPro", $con['proDir']); ?>"/>
+        </div>
+        <input type="submit"  class="btn btn-success col-sm-1" style="margin-left: 30px" value="添加后台支持"/>
+    </form>
+    </div>
 </div>
 
 <div class="row">
@@ -326,22 +348,40 @@ disDeFold("拆解标题Title")
                 <div class="row" style="text-align: center">
                     <?php
                         $arr = scandir(BASE_DIR."/resource/codeSeg");
+                        $codeSegArr = parse_ini_file(BASE_DIR."/codeSeg.ini");
                         foreach($arr as $value){
                             if($value !="." && $value != ".."){
+
+                                $chanShu = isset($codeSegArr[$value])?$codeSegArr[$value]:"";
+
                                 echo " <div class='row'><label for=\"hello\" class=\"control-label col-sm-2\">{$value}</label>";
                                 echo "
-                                 <div class=\" col-sm-1\">
+
+                                <form action='/actions/modIniParaA.php' method='post'>
+                                     <input type='hidden' name='paraName' value='{$value}'/>
+                                     <div class='col-sm-3'>
+                                        <input type='text' name='paraValue' id='cText' class='form-control'
+
+                                        value='{$chanShu}'/>
+                                    </div>
+                                    <div class='col-sm-1'>
+                                    <input type='submit' class='btn btn-success' value='提交修改参数'/>
+                                    </div>
+                                </form>
+                                <div class=\" col-sm-1\">
                                     <input type=\"checkbox\" name=\"codeSeg\" value=\"{$value}\" id=\"hello\" class=\"form-control\"/>
                                 </div>
                                 </div>
                                 <hr>
                                 ";
+
+
                             }
                         }
                     ?>
                 </div>
 
-                
+
                 <div class="form-group">
                     <label class="control-label col-sm-1" for="finalPro2">目标网页</label>
                     <div class="col-sm-7">

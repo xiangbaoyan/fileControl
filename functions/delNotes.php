@@ -14,7 +14,7 @@ function  delNotes(&$data)
     $data = preg_replace("/tppabs=\"[\S]*\"/U","",$data);
 
     $data = preg_replace("/\@charset[^;]*;/U","",$data);
-    $data = "@CHARSET \"UTF-8\";".$data;
+ //   $data = "@CHARSET \"UTF-8\";".$data;
     return $data;
 }
 

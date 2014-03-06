@@ -15,10 +15,10 @@ foreach (new RecursiveIteratorIterator($it) as $file) {
     if (preg_match('/(.php|.html)$/', $file)) {
         $data = file_get_contents($file);
         delNotes($data);
-       // modCssPath($data);
-        //modJsPath($data);
-        //modImgPath($data);
-        //modHtmToPhp($data);
+        modCssPath($data);
+        modJsPath($data);
+        modImgPath($data);
+        modHtmToPhp($data);
         file_put_contents($file, $data);
     }
 }

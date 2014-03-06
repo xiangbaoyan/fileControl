@@ -1,0 +1,52 @@
+<?php
+/**
+ * 必须提供数据库的支持，表名，数据库名，字段名必须一致
+ */
+define('IN_TG',true);
+require $_SERVER['DOCUMENT_ROOT'] . "/functions/mysqlFun.php";
+
+$name = @$_POST['name'];
+$con = @$_POST['con'];
+
+_connect();
+_select_db();
+_set_names();
+
+//更新操作
+if ($name && $con) {
+    if ($name == 'title') {
+        echo $name;
+        $sql = "update tg_html
+                   set tg_title='{$con}'
+                 where tg_id=1";
+        _query($sql);
+    }
+
+    if ($name == 'slogan') {
+        echo $name;
+        $sql = "update tg_html
+                   set tg_slogan='{$con}'
+                 where tg_id=1";
+        _query($sql);
+    }
+
+}
+
+
+//查询生成静态页面
+
+$sql =  "select tg_title,tg_slogan from tg_html where tg_id = 1";
+$row = _fetch_array($sql);
+$title =  $row['tg_title'];
+$slogan = $row['tg_slogan'];
+_close();
+ob_start();
+?>
+<?php
+//这段内容移到页面底部
+$data = ob_get_clean();
+file_put_contents($_SERVER['DOCUMENT_ROOT'].'/m.html', $data);
+?>
+
+
+

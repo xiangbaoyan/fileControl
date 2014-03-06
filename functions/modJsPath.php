@@ -52,6 +52,6 @@ function modJsPath(&$data) {
 
         $i = 1;
 
-       $data = preg_replace_callback("/[^\"]*\.js/","callProJs",$data);
+       $data = preg_replace_callback("/(?<=src\=\")[^\"]+\.js/","callProJs",$data);
 
     }
