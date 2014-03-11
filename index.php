@@ -126,10 +126,11 @@ if (!@$con['proName']) {
 <hr>
 <form action="/actions/crePageDirA.php" method="post">
     <label for="proDir2">提取一个页面相关数据到一个新的目录(后缀是page2)：</label>
-    <input type="text" name="proDir2" id="proDir2" readonly style="width: 500px" value="<?php echo $con['proDir']."-page2" ?>">
+    <input type="text" name="proDir2" id="proDir2" readonly style="width: 500px"
+           value="<?php echo $con['proDir'] . "-page2" ?>">
     <br>
     <label for="page" style="margin-left: 200px">要截取的页面为：</label>
-    <input type="text" name="page" style="width:500px" id="page" value="<?php echo $con['proDir']?>"/>
+    <input type="text" name="page" style="width:500px" id="page" value="<?php echo $con['proDir'] ?>"/>
     <input type="submit" class="btn btn-success" value="处理"/>
 </form>
 
@@ -195,7 +196,7 @@ disDeFold("拆解标题Title")
 <hr>
 <div class="row">
     <div class="form-group">
-    <form action="/actions/addBsSupA.php" class="form-horizontal" method="post">
+        <form action="/actions/addBsSupA.php" class="form-horizontal" method="post">
 
             <label for="proName" class="col-sm-3 control-label">请输入要添加的项目路径:</label>
 
@@ -205,17 +206,18 @@ disDeFold("拆解标题Title")
             </div>
             <input id="list" class="btn btn-success col-sm-2" type="submit" value="为该项目添加Bootstrap支持"/>
 
-    </form>
+        </form>
     </div>
     <div class="form-group">
-    <form action="/actions/addAdminA.php" method="post" class="form-horizontal">
-        <label for="proName3d" class="col-sm-3 control-label">请输入要添加的项目路径:</label>
-        <div class="col-sm-4">
-            <input type="text" name="proName" id="proName3" class="form-control"
-                   value="<?php echo str_replace(basename($con['proDir']), "finalPro", $con['proDir']); ?>"/>
-        </div>
-        <input type="submit"  class="btn btn-success col-sm-1" style="margin-left: 30px" value="添加后台支持"/>
-    </form>
+        <form action="/actions/addAdminA.php" method="post" class="form-horizontal">
+            <label for="proName3d" class="col-sm-3 control-label">请输入要添加的项目路径:</label>
+
+            <div class="col-sm-4">
+                <input type="text" name="proName" id="proName3" class="form-control"
+                       value="<?php echo str_replace(basename($con['proDir']), "finalPro", $con['proDir']); ?>"/>
+            </div>
+            <input type="submit" class="btn btn-success col-sm-1" style="margin-left: 30px" value="添加后台支持"/>
+        </form>
     </div>
 </div>
 
@@ -269,7 +271,8 @@ disDeFold("拆解标题Title")
                             </div>
 
                             <div class="col-sm-1">
-                                <input style="height: 30px" type="checkbox" name="jses" value="<?php echo $api ?>" class="form-control" id="jses"/>
+                                <input style="height: 30px" type="checkbox" name="jses" value="<?php echo $api ?>"
+                                       class="form-control" id="jses"/>
                             </div>
                             <hr>
                         </form>
@@ -283,12 +286,14 @@ disDeFold("拆解标题Title")
 
                 <div class="form-group">
                     <label class="control-label col-sm-1" for="finalPro">目标网页</label>
+
                     <div class="col-sm-7">
-                    <input type="text" class="form-control" id="finalPro"/>
+                        <input type="text" class="form-control" id="finalPro"/>
                     </div>
                     <button class="btn btn-success col-sm-3" id="addJsBtn">
                         <i class="glyphicon glyphicon-plus"></i>
-                        添加到目标项目的网页中去</button>
+                        添加到目标项目的网页中去
+                    </button>
                 </div>
 
             </div>
@@ -347,15 +352,15 @@ disDeFold("拆解标题Title")
                 ?>
                 <div class="row" style="text-align: center">
                     <?php
-                        $arr = scandir(BASE_DIR."/resource/codeSeg");
-                        $codeSegArr = parse_ini_file(BASE_DIR."/codeSeg.ini");
-                        foreach($arr as $value){
-                            if($value !="." && $value != ".."){
+                    $arr = scandir(BASE_DIR . "/resource/codeSeg");
+                    $codeSegArr = parse_ini_file(BASE_DIR . "/codeSeg.ini");
+                    foreach ($arr as $value) {
+                        if ($value != "." && $value != "..") {
 
-                                $chanShu = isset($codeSegArr[$value])?$codeSegArr[$value]:"";
+                            $chanShu = isset($codeSegArr[$value]) ? $codeSegArr[$value] : "";
 
-                                echo " <div class='row'><label for=\"hello\" class=\"control-label col-sm-2\">{$value}</label>";
-                                echo "
+                            echo " <div class='row'><label for=\"hello\" class=\"control-label col-sm-2\">{$value}</label>";
+                            echo "
 
                                 <form action='/actions/modIniParaA.php' method='post'>
                                      <input type='hidden' name='paraName' value='{$value}'/>
@@ -376,20 +381,59 @@ disDeFold("拆解标题Title")
                                 ";
 
 
-                            }
                         }
+                    }
                     ?>
                 </div>
 
 
                 <div class="form-group">
                     <label class="control-label col-sm-1" for="finalPro2">目标网页</label>
+
                     <div class="col-sm-7">
                         <input type="text" class="form-control" id="finalPro2" name="proName">
                     </div>
                     <button class="btn btn-success col-sm-3" id="addPhpBtn">
                         <i class="glyphicon glyphicon-plus"></i>
-                        添加到目标项目的网页中去</button>
+                        添加到目标项目的网页中去
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel-group" id="accordion5">
+    <div class="panel">
+        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion5"
+           href="#collapse5"
+           style="color: white;text-align: center;text-decoration: none">
+            <div class="panel-heading" style="background-color: green">
+                <h4 class="panel-title">
+                    备注的记忆选项
+                </h4>
+            </div>
+        </a>
+
+        <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="panel-body">
+                            <div class="panel panel-danger" id="user">
+                                <div class="panel-heading">Mysql 的ini文件配置</div>
+
+                                [mysql]<br>
+                                default-character-set=utf8
+                                <br>
+                                [mysqld]<br>
+                                character-set-server=utf8
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -399,37 +443,37 @@ disDeFold("拆解标题Title")
 <hr>
 <div id="helloTest"></div>
 </body>
-    <script type="text/javascript">
-        $("#jquerySupport").bind("keyup paste change",function(){
-            $("#finalPro").val($("#jquerySupport").val());
-            $("#finalPro2").val($("#jquerySupport").val());
-       });
+<script type="text/javascript">
+    $("#jquerySupport").bind("keyup paste change", function () {
+        $("#finalPro").val($("#jquerySupport").val());
+        $("#finalPro2").val($("#jquerySupport").val());
+    });
 
 
-        $("#addJsBtn").click(function(){
-            var arr = [];
-            var page = $("#finalPro").val();
-            $("input[name='jses']:checked").each(function(){
-                arr.push($(this).val());
-            });
-            $.post("/actions/addJsesA.php",{jses:arr,pageName:page},function(data){
-               $("#helloTest").html(data);
-            });
+    $("#addJsBtn").click(function () {
+        var arr = [];
+        var page = $("#finalPro").val();
+        $("input[name='jses']:checked").each(function () {
+            arr.push($(this).val());
         });
-
-        $("#addPhpBtn").click(function(){
-            var arr = [];
-            var codeArr =[];
-            var dir = $("#finalPro2").val();
-            $("input[name='phpes']:checked").each(function(){
-                arr.push($(this).val());
-            });
-            $("input[name='codeSeg']:checked").each(function(){
-                codeArr.push($(this).val());
-            });
-            $.post("/actions/addPhpesA.php",{phpes:arr,proPage:dir,codeSegs:codeArr},function(data){
-                $("#helloTest").html(data);
-            });
+        $.post("/actions/addJsesA.php", {jses: arr, pageName: page}, function (data) {
+            $("#helloTest").html(data);
         });
-    </script>
+    });
+
+    $("#addPhpBtn").click(function () {
+        var arr = [];
+        var codeArr = [];
+        var dir = $("#finalPro2").val();
+        $("input[name='phpes']:checked").each(function () {
+            arr.push($(this).val());
+        });
+        $("input[name='codeSeg']:checked").each(function () {
+            codeArr.push($(this).val());
+        });
+        $.post("/actions/addPhpesA.php", {phpes: arr, proPage: dir, codeSegs: codeArr}, function (data) {
+            $("#helloTest").html(data);
+        });
+    });
+</script>
 </html>
