@@ -1,6 +1,4 @@
-
 <?php
-
     $projectName = @$_POST['projectName'];
     if($projectName){
         require $_SERVER['DOCUMENT_ROOT']."/functions/common.php";
@@ -22,7 +20,6 @@
                 </h4>
             </div>
         </a>
-
         <div id="collapse6" class="panel-collapse collapse">
             <div class="panel-body">
                 <form role="form" action="smartyTool.php" method="post" class="form-horizontal">

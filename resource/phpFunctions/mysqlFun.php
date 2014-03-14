@@ -262,6 +262,18 @@ function creHtmlTable($arr){
     _query($sql);
 }
 
+//为用户目录建立trigger
+function createTriggerDir(){
+    $sql = "create trigger t_setDir before insert on tg_user for each row
+          begin set NEW.tg_userDir = CONCAT('/users/',LEFT(NEW.tg_uniqid,10));
+                set NEW.tg_reg_time = NOW();
+                set NEW.tg_last_time = NOW();
+          end;";
+
+    _query($sql);
+}
+
+
 
 /*--------------------------注册函数-------------------------------*/
 /*
@@ -323,7 +335,16 @@ function registUser($arr) {
         '对不起，此用户已被注册'
     );
     _query($sql);
-    backPage("注册成功");
+
+    if(_affected_rows()==1){
+        _setcookies($arr['username'],$arr['uniqid'],1);
+        backPage("注册成功");
+        $sql = "select tg_userDir from tg_user where tg_username='{$arr['username']}' limit 1";
+        $row = _fetch_array($sql);
+        $dir = $_SERVER['DOCUMENT_ROOT'].$row['tg_userDir'];
+        mkdir($dir);
+    }
+
 }
 
 
@@ -342,12 +363,14 @@ function loginUser($arr){
     //设置保留时间
     _setcookies($_rows['tg_username'],$_rows['tg_uniqid'],'2');
     //看是否是admin
-        if ($_rows['tg_level'] == 1) {
-            $_SESSION['admin'] = $_rows['tg_username'];
+        if ($_rows['tg_level'] == 5) {
+            $_SESSION['manage'] = $_rows['tg_username'];
             _close();
-            backPage(null);
-            }
-        backPage("登陆成功");
+            backPage("登陆成功，转到用户管理","/manage/admin.php");
+         }elseif($_rows['tg_level'] == 1){
+            $_SESSION['merchant'] = $_rows['tg_username'];
+        }
+        echo "<script>alert('用户登录成功');history.go(-2);</script>";
     }
     else {
     _close();
@@ -356,3 +379,36 @@ function loginUser($arr){
     }
 }
 
+
+/**
+ * 转数字级别成文字级别
+ *
+ * @param $tg_level
+ * @return string
+ */
+function levelToName($tg_level){
+    switch($tg_level){
+        case 0: return "普通用户";
+        case 1: return "普通商家";
+        case 5: return "管理员";
+        default: return "不识别用户组";
+    }
+}
+
+/**
+ * 分页函数从数据库取指定书目
+ *
+ * @param string $startItem 起始条目
+ * @param string $fetchLength 要取得长度
+ * @param string $tableName 表明
+ *
+ * @return resource result
+ */
+function getPageData($startItem,$fetchLength){
+
+    $sql = "select tg_username,tg_level,tg_reg_time
+              from tg_user
+             ORDER by tg_id
+             limit {$startItem},{$fetchLength}";
+    return  _query($sql);
+}

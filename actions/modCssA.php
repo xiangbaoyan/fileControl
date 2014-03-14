@@ -9,9 +9,7 @@ require BASE_DIR . "/functions/delNotes.php";
 
 $con = parse_ini_file(BASE_DIR . "/config.ini");
 $proDir = $con['proDir'];
-echo $proDir;
 $it = new DirectoryIterator($proDir . "/css");
-
 foreach ($it as $file) {
     if (!$it->isDot()) {
         $data = file_get_contents($proDir . "\\css\\" . $file);
@@ -22,4 +20,4 @@ foreach ($it as $file) {
 }
 
 
-//popWin("修改css文件中Url成功");
+popWin("修改css文件中Url成功");
