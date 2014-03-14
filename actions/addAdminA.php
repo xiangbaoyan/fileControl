@@ -4,12 +4,12 @@ require BASE_DIR . '/functions/copDirToDir.php';
 
 
 
-$sourDir = BASE_DIR."/resource/admin";
+$sourDir = BASE_DIR."/resource/manage";
 $desDir = @$_POST['proName'];
 
 if($sourDir && $desDir){
 
-    copDirToDir($desDir,$sourDir,"admin");
+    copDirToDir($desDir,$sourDir,"manage");
 
 }else{
     popWin("两个目录有错");

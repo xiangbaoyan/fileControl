@@ -233,6 +233,10 @@ function creUserTable($arr){
     $sql.=",`tg_last_ip` varchar(20) NOT NULL COMMENT '//最后登录的IP'";
     }
 
+    if(in_array("userDir",$arr)){
+        $sql.=",`tg_userDir` varchar(200)   COMMENT '//用户目录'";
+    }
+
     /*
      * 结束$sql
      */

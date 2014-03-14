@@ -10,7 +10,7 @@ function creGoodTable()
 {
     //建立商品表:
     $sql = "
-create table tg_good (
+create table if not exists tg_good (
 
     tg_id         int           unsigned not null auto_increment  comment '//id',
     tg_pName      varchar(20)   not null                          comment '//商品名称',
@@ -20,9 +20,8 @@ create table tg_good (
     tg_pReaUser   varchar(20)   not null                          comment '//商品发布者',
     tg_pMainImg   varchar(50)                                     comment '//商品主要图片',
     tg_pReaTime   datetime      not null                          comment '//商品发布日期',
-    tg_beInTime   tinyint       unsigned                          comment '//商品上架天数'
+    tg_beInTime   tinyint       unsigned                          comment '//商品上架天数',
     PRIMARY KEY (tg_id)
-
 )ENGINE=MyISAM DEFAULT CHARSET=utf8 auto_increment=50;";
     _query($sql);
 }
@@ -80,7 +79,7 @@ function addColumn(){
 
 //创建用户表,首先写明字段，
 $arr = ['username', 'password', 'uniqid', 'active', 'sex', 'level', 'reg_time',
-    'last_time', 'login_ip', 'login_count'];
+    'last_time', 'login_ip', 'login_count','userDir'];
 //创建网站模块表
 $html = ['title', 'slogan'];
 
