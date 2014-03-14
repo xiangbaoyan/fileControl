@@ -439,7 +439,7 @@ disDeFold("拆解标题Title")
         </div>
     </div>
 </div>
-
+<?php  include_once "smartyTool.php"?>
 <hr>
 <div id="helloTest"></div>
 </body>
