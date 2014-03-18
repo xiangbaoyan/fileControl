@@ -422,6 +422,19 @@ disDeFold("拆解标题Title")
                     <div class="col-md-3">
                         <div class="panel-body">
                             <div class="panel panel-danger" id="user">
+                                <div class="panel-heading">Mysql 创建数据库</div>
+                                CREATE DATABASE `testguest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+                                USE `testguest`;
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="panel-body">
+                            <div class="panel panel-danger" id="user">
                                 <div class="panel-heading">Mysql 的ini文件配置</div>
 
                                 [mysql]<br>
