@@ -9,14 +9,15 @@
  *
  * @return string
  */
+$subCon = "../images/";
 function callUrl($matches)
 {
-
-    return "../images/" . basename($matches[0]);
+   global $subCon;
+    return  $subCon . basename($matches[0]);
 }
 
 function modUrlPath(&$data)
 {
 
-   $data = preg_replace_callback("/(?<=url\(\").+\.(png|jpg|gif)/", "callUrl",$data);
+   $data = preg_replace_callback("/(?<=url\().+\.(png|jpg|gif)\"?/", "callUrl",$data);
 }
