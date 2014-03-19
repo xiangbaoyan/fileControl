@@ -411,43 +411,34 @@ disDeFold("拆解标题Title")
            style="color: white;text-align: center;text-decoration: none">
             <div class="panel-heading" style="background-color: green">
                 <h4 class="panel-title">
-                    备注的记忆选项
+                    MYSQL备注的记忆选项
                 </h4>
             </div>
         </a>
 
         <div id="collapse5" class="panel-collapse collapse">
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="panel-body">
-                            <div class="panel panel-danger" id="user">
-                                <div class="panel-heading">Mysql 创建数据库</div>
-                                CREATE DATABASE `testguest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-                                USE `testguest`;
-                            </div>
+             <?php include "MYSQL.php"?>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        </div>
+<div class="panel-group" id="accordion6">
+    <div class="panel">
+        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion6"
+           href="#collapse6"
+           style="color: white;text-align: center;text-decoration: none">
+            <div class="panel-heading" style="background-color: green">
+                <h4 class="panel-title">
+                   针对单个文件处理的选项集合
+                </h4>
+            </div>
+        </a>
 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="panel-body">
-                            <div class="panel panel-danger" id="user">
-                                <div class="panel-heading">Mysql 的ini文件配置</div>
-
-                                [mysql]<br>
-                                default-character-set=utf8
-                                <br>
-                                [mysqld]<br>
-                                character-set-server=utf8
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
+        <div id="collapse6" class="panel-collapse collapse">
+            <div class="panel-body">
+                <?php include("dealSinglePage.php")?>
             </div>
         </div>
     </div>
