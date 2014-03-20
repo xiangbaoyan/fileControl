@@ -404,46 +404,10 @@ disDeFold("拆解标题Title")
 </div>
 
 
-<div class="panel-group" id="accordion5">
-    <div class="panel">
-        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion5"
-           href="#collapse5"
-           style="color: white;text-align: center;text-decoration: none">
-            <div class="panel-heading" style="background-color: green">
-                <h4 class="panel-title">
-                    MYSQL备注的记忆选项
-                </h4>
-            </div>
-        </a>
-
-        <div id="collapse5" class="panel-collapse collapse">
-            <div class="panel-body">
-             <?php include "MYSQL.php"?>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="panel-group" id="accordion6">
-    <div class="panel">
-        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion6"
-           href="#collapse6"
-           style="color: white;text-align: center;text-decoration: none">
-            <div class="panel-heading" style="background-color: green">
-                <h4 class="panel-title">
-                   针对单个文件处理的选项集合
-                </h4>
-            </div>
-        </a>
-
-        <div id="collapse6" class="panel-collapse collapse">
-            <div class="panel-body">
-                <?php include("dealSinglePage.php")?>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include "MYSQL.php"?>
+<?php include("dealSinglePage.php")?>
 <?php  include_once "smartyTool.php"?>
+<?php  include_once "jqueryFuns.php"?>
 <hr>
 <div id="helloTest"></div>
 </body>

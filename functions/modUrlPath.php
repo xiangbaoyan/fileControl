@@ -13,11 +13,12 @@ $subCon = "../images/";
 function callUrl($matches)
 {
    global $subCon;
+    echo "----------"."<br>";
+    echo $subCon . basename($matches[0])."<br>";
     return  $subCon . basename($matches[0]);
 }
 
 function modUrlPath(&$data)
 {
-
-   $data = preg_replace_callback("/(?<=url\().+\.(png|jpg|gif)\"?/", "callUrl",$data);
+   $data = preg_replace_callback("/(?<=url\().+\.(png|jpg|gif)\"?/U", "callUrl",$data);
 }

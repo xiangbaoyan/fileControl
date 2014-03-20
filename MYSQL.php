@@ -1,39 +1,53 @@
-<div class="row">
-    <div class="col-md-10">
-        <div class="panel-body">
-            <div class="panel panel-danger" id="user">
-                <div class="panel-heading">Mysql 创建数据库</div>
-                CREATE DATABASE `testguest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-                USE `testguest`;
+<div class="panel-group" id="accordion5">
+    <div class="panel">
+        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion5"
+           href="#collapse5"
+           style="color: white;text-align: center;text-decoration: none">
+            <div class="panel-heading" style="background-color: green">
+                <h4 class="panel-title">
+                    MYSQL备注的记忆选项
+                </h4>
             </div>
+        </a>
 
-        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="panel-body">
+                            <div class="panel panel-danger" id="user">
+                                <div class="panel-heading">Mysql 创建数据库</div>
+                                CREATE DATABASE `testguest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+                                USE `testguest`;
+                            </div>
 
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-10">
-        <div class="panel-body">
-            <div class="panel panel-danger" id="user">
-                <div class="panel-heading">Mysql 的ini文件配置</div>
+                        </div>
 
-                [mysql]<br>
-                default-character-set=utf8
-                <br>
-                [mysqld]<br>
-                character-set-server=utf8
-            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="panel-body">
+                            <div class="panel panel-danger" id="user">
+                                <div class="panel-heading">Mysql 的ini文件配置</div>
 
-        </div>
-    </div>
-</div>
+                                [mysql]<br>
+                                default-character-set=utf8
+                                <br>
+                                [mysqld]<br>
+                                character-set-server=utf8
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
 
-<div class="row">
-    <div class="col-md-10">
-        <div class="panel-body">
-            <div class="panel panel-danger" id="user">
-                <div class="panel-heading">创建用户表</div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="panel-body">
+                            <div class="panel panel-danger" id="user">
+                                <div class="panel-heading">创建用户表</div>
              <pre>
                     CREATE TABLE `tg_user` (
                 `tg_id` mediumint(8) unsigned NOT NULL auto_increment COMMENT '//用户自动编号',
@@ -60,8 +74,14 @@
                 PRIMARY KEY  (`tg_id`)
                 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
              </pre>
-            </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
